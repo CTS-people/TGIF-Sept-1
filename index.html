@@ -67,7 +67,11 @@
     <h2 id="endTitle">TIME UP</h2>
     <p id="endBody"></p>
     <p id="syncMsg" class="sync"></p>
-    <button class="btn" id="againBtn">Play again</button>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="btn" id="againBtn">Play again</button>
+      <button class="btn alt" id="exitBtn">Exit</button>
+    </div>
+    <p class="hint" id="exitNote"></p>
   </div>
 </div>
 
@@ -580,6 +584,13 @@ document.getElementById('startBtn').onclick = () => {
 document.getElementById('againBtn').onclick = () => {
   document.getElementById('endScreen').style.display = 'none';
   makeLevel();
+};
+document.getElementById('exitBtn').onclick = () => {
+  const note = document.getElementById('exitNote');
+  window.close();
+  // Most browsers only let scripts close tabs they themselves opened.
+  // If we're still here after trying, tell the player to close it manually.
+  note.textContent = 'You can close this browser tab now.';
 };
 
 makeLevel();
